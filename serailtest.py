@@ -1,5 +1,14 @@
 import serial
-ser = serial.Serial('/dev/ttyUSB1',baudrate=57600,timeout=5)
+import time
+ser = serial.Serial('/dev/ttyUSB0',19200)
+ser.flush()
+if ser.isOpen():
+    ser.close()
+ser.open()
 
-ser.write("30,30;")
+
+time.sleep(2)
+print ("yo")
+#print ser.read()
+ser.write(b'30.0,30.0;')
 ser.close()
