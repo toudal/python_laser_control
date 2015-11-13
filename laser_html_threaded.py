@@ -25,12 +25,12 @@ myLock = threading.Lock()
 
 def myRequest():
     mydata =  json.load(urllib2.urlopen("http://45.55.243.197/location"))
-    x =  int((mydata['x'] - .5) * 2 * multiplier)
-    y =  int((mydata['y'] - .5) * 2 * multiplier)
+    x =  (mydata['x'] - .5) * 2 * multiplier
+    y =  (mydata['y'] - .5) * 2 * multiplier
     myLock.acquire()
-    print "x:"+ str(x)
-    print "y:" + str(y)
-    #ser.write(str(x) + ','+ str(y) + '.')
+    #print "x:"+ str(x)
+    #print "y:" + str(y)
+    ser.write(str(x) + ','+ str(y) + ';')
     myLock.release()
 
 
